@@ -1,11 +1,18 @@
-FROM nginx:latest
+# Use official Python image as base
+FROM python:3.9
 
-WORKDIR /usr/share/nginx/html
+# Set the working directory inside the container
+WORKDIR /app
 
-RUN rm -rf ./*
-
+# Copy all files to the container
 COPY . .
 
-EXPOSE 80
+# Install required dependencies
+RUN pip install -r requirements.txt
 
-CMD ["nginx", "-g", "daemon off"]
+# Expose the application port
+EXPOSE 5000
+
+# Run the Flask application
+CMD ["python", "app.py"]
+
