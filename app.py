@@ -22,6 +22,15 @@ cursor = db.cursor()
 def home():
     return render_template("index.html")  # Loads index.html
 
+@app.route("/contact")
+def contact_form():
+    return render_template("contact.html")
+
+@app.route("/hobbies")
+def hobbies():
+    return render_template("hobbies.html")
+
+
 # Handle Contact Form Submission
 @app.route("/contact", methods=["POST"])
 def contact():
